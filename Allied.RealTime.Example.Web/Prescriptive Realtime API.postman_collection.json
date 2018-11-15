@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "d070fc34-1ee6-43ed-b67a-42cf4ddc390e",
+		"name": "Prescriptive Realtime API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Balance Check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"routingTransitNumber\": \"1234567\", \"accountNumber\": \"112233\"}"
+				},
+				"url": {
+					"raw": "http://localhost:65016/api/transactions/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65016",
+					"path": [
+						"api",
+						"transactions",
+						"balance"
+					]
+				},
+				"description": "Balance request"
+			},
+			"response": []
+		},
+		{
+			"name": "Debit DDA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transactionId\": \"123456\",\n\t\"transactionKey\": \"f887aeb9-1d2e-4902-b476-0cf14bbae290\",\n\t\"amount\": \"123.45\",\n\t\"routingTransitNumber\": \"1234567\",\n\t\"accountNumber\": \"112233\",\n\t\"payeeName\": \"payeeName\",\n\t\"description\": \"customer payment memo\",\n\t\"transactionType\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:65016/api/transactions/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65016",
+					"path": [
+						"api",
+						"transactions",
+						"transaction"
+					]
+				},
+				"description": "Successful transaction request"
+			},
+			"response": []
+		},
+		{
+			"name": "Debit GL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transactionId\": \"123456\",\n\t\"transactionKey\": \"f887aeb9-1d2e-4902-b476-0cf14bbae290\",\n\t\"amount\": \"123.45\",\n\t\"routingTransitNumber\": \"1234567\",\n\t\"accountNumber\": \"112233\",\n\t\"payeeName\": \"payeeName\",\n\t\"description\": \"customer payment memo\",\n\t\"transactionType\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:65016/api/transactions/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65016",
+					"path": [
+						"api",
+						"transactions",
+						"transaction"
+					]
+				},
+				"description": "Failed transaction (uses GL)"
+			},
+			"response": []
+		},
+		{
+			"name": "Memo post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transactionId\": \"123456\",\n\t\"transactionKey\": \"f887aeb9-1d2e-4902-b476-0cf14bbae290\",\n\t\"amount\": \"123.45\",\n\t\"routingTransitNumber\": \"1234567\",\n\t\"accountNumber\": \"112233\",\n\t\"checkNumber\": 5001,\n\t\"payeeName\": \"payeeName\",\n\t\"description\": \"customer payment memo\",\n\t\"transactionType\": 5\n}"
+				},
+				"url": {
+					"raw": "http://localhost:65016/api/transactions/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65016",
+					"path": [
+						"api",
+						"transactions",
+						"transaction"
+					]
+				},
+				"description": "Memo post"
+			},
+			"response": []
+		},
+		{
+			"name": "Memo post no check number",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transactionId\": \"123456\",\n\t\"transactionKey\": \"f887aeb9-1d2e-4902-b476-0cf14bbae290\",\n\t\"amount\": \"123.45\",\n\t\"routingTransitNumber\": \"1234567\",\n\t\"accountNumber\": \"112233\",\n\t\"payeeName\": \"payeeName\",\n\t\"description\": \"customer payment memo\",\n\t\"transactionType\": 5\n}"
+				},
+				"url": {
+					"raw": "http://localhost:65016/api/transactions/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65016",
+					"path": [
+						"api",
+						"transactions",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
