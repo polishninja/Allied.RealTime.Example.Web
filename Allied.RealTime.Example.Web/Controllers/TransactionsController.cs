@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Allied.RealTime.Example.Web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -108,7 +109,7 @@ namespace Allied.RealTime.Example.Web.Controllers
                 // NOTE: you may not want to return the actual exception...
                 // by all means return what makes sense and is secure.
                 response = new TransactionResponse(ex);
-                HttpContext.Response.StatusCode = 500;
+                HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
             }
 
             // New (successful) transaction, so add to our cache...we won't
