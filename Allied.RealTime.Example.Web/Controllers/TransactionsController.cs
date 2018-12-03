@@ -111,8 +111,12 @@ namespace Allied.RealTime.Example.Web.Controllers
                 HttpContext.Response.StatusCode = 500;
             }
 
-            // New transaction, so add to our cache
-            AddTransactionResponseToCache(response);
+            // New (successful) transaction, so add to our cache...we won't
+            // add errored transactions since the client could (should)
+            // correct the condition and re-submit. In that case we don't
+            // want to return the prior error.
+            if (response.success)
+                AddTransactionResponseToCache(response);
             return response;
         }
 
