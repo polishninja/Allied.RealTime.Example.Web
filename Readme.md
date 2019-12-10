@@ -51,9 +51,10 @@ To avoid this, your real time collection system/API should employ idempotency. F
 
 The sample real time API uses Microsoft .NET Core, version 2.1. This framework was chosen for its simplicity and portability. You should find it a trivial task to port the concepts shown here to other languages/runtimes. However, if there are concepts and/or code here that inspire questions, but all means contact Allied for guidance.
 
-The API includes two endpoints:
+The API includes three endpoints:
 * [api/transactions/balance](api/transactions/balance)
 * [api/transactions/transaction](api/transactions/transaction)
+* [api/profile](api/profile)
 
 Both use HTTP POST to provide the endpoint with relevant data in (example) JSON format:
 
@@ -78,6 +79,14 @@ Both use HTTP POST to provide the endpoint with relevant data in (example) JSON 
 	"payeeName": "payeeName",
 	"description": "customer payment memo",
 	"transactionType": 2
+}
+```
+
+##### Profile Payload
+
+```JSON
+{
+	"username": "franksnbeans",
 }
 ```
 
@@ -144,6 +153,14 @@ public class TransactionRequest
 }
 ```
 
+##### Bill Payment Profile Request
+```C#
+public class ProfileRequest
+{
+    public string username { get; set; }
+}
+```
+
 Responses from the API include a success flag and an error description, if any:
 
 ##### Balance Response
@@ -164,6 +181,23 @@ Responses from the API include a success flag and an error description, if any:
 {
     "transactionKey": "f887aeb9-1d2e-4902-b476-0cf14bbae290",
     "description": "Transaction successful",
+    "success": true,
+    "errorMessage": null
+}
+```
+
+##### Profile Response
+
+```JSON
+{
+    "firstName": "Frank",
+    "lastname": "Beans",
+    "companyName": null,
+    "address1": "123 Fast Lane",
+    "address2": null,
+    "city": "Detroit",
+    "state": "MI",
+    "zip": "48118",
     "success": true,
     "errorMessage": null
 }

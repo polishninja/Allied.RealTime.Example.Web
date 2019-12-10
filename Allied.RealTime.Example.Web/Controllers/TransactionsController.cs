@@ -22,7 +22,7 @@ namespace Allied.RealTime.Example.Web.Controllers
             _cache = memoryCache;
         }
 
-        // GET api/transactions
+        // POST api/transactions/balance
         [HttpPost("balance")]
         public ActionResult<BalanceResponse> Post([FromBody] BalanceRequest balanceRequest)
         {
@@ -41,7 +41,7 @@ namespace Allied.RealTime.Example.Web.Controllers
             return response;
         }
 
-        // POST api/transactions
+        // POST api/transactions/transaction
         [HttpPost("transaction")]
         public ActionResult<TransactionResponse> Post([FromBody] TransactionRequest transactionRequest)
         {
